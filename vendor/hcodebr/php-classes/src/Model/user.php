@@ -179,7 +179,7 @@ public static function getForgot($email, $inadmin = true)
                  $link = "http://www.hcodecommerce.com.br/forgot/reset?code=$result";
              } 
              $mailer = new Mailer($data['desemail'], $data['desperson'], "Redefinir senha da Hcode Store", "forgot", array(
-                 "name"=>$data['desperson'],
+                 "name"=>$data["desperson"],
                  "link"=>$link
              )); 
              $mailer->send();
@@ -218,9 +218,28 @@ public static function getForgot($email, $inadmin = true)
      }
  }
 
+public static function setFogotUsed($idrecovery)
+{
+
+    $sql = new Sql();
+
+    $sql->query("UPDATE tb_userspasswordsrecoveries SET dtrecovery = NOW() WHERE idrecovery = :idrecovery", array(
+        "idrecovery"=>$idrecovery
+    )); 
 }
 
+public function setPassword($password)
+{
 
-//}
+    $sql = new Sql();
+
+    $sql->query("UPDATE tb_users SET despassword = :password WHERE iduser = :iduser", array(
+        ":password"=>$password,
+        ":iduser"=>$this->getiduser()
+    ));
+
+}
+
+}
 
 ?>

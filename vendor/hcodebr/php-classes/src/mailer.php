@@ -6,8 +6,8 @@ use Rain\Tpl;
 
 class Mailer {
 
-	const USERNAME = "fabricioriosleal@gmail.com";
-	const PASSWORD = "<?Password?>";
+	const USERNAME = "sna18v@gmail.com";
+	const PASSWORD = "monitor@2018";
 	const NAME_FROM = "Hcode Store";
 
 	private $mail;
@@ -26,12 +26,12 @@ class Mailer {
 		$tpl = new Tpl;
 
 		foreach ($data as $key => $value) {
-			$tpl->assing($key, $value);
+			$tpl->assign($key, $value);
 		}
 
 		$html = $tpl->draw($tplName, true);
 
-		$this->$this->mail = new \PHPMailer;
+		$this->mail = new \PHPMailer;
 
 		//Tell PHPMailer to use SMTP
 		$this->mail->isSMTP();
