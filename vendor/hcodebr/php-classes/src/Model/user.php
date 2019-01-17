@@ -179,7 +179,7 @@ public static function getForgot($email, $inadmin = true)
                  $link = "http://www.hcodecommerce.com.br/forgot/reset?code=$result";
              } 
              $mailer = new Mailer($data['desemail'], $data['desperson'], "Redefinir senha da Hcode Store", "forgot", array(
-                 "name"=>$data["desperson"],
+                 "name"=>$data['desperson'],
                  "link"=>$link
              )); 
              $mailer->send();
