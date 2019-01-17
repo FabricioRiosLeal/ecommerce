@@ -17,6 +17,21 @@ public static function listAll()
 
 }
 
+public static function checklist($list)
+{
+
+    foreach ($list as &$row) {
+        
+        $p = new product();
+        $p->setData($row);
+        $row = $p->getValues();
+ 
+    }
+
+    return $list;
+
+}
+
 public function save()
 {
 
